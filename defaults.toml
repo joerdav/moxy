@@ -1,0 +1,4 @@
+default_upstream = "https://go-feed-me.joe-davidson.co.uk"
+[[upstream]]
+path_prefix = "/apps/basket"
+url = "http://localhost:8085"
