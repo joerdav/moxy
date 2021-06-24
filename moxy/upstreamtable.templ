@@ -20,44 +20,42 @@
 {% endtempl %}
 
 {% templ UpstreamTableTemplate(c *config.Config) %}
-    <table>
-        <tr>
-            <th>{%= "Priority" %}</th>
-            <th>{%= "Path Prefix" %}</th>
-            <th>{%= "Destination" %}</th>
-            <th>{%= "Move" %}</th>
-            <th>{%= "Delete" %}</th>
-        </tr>
-        <tr>
-            <td>{%= "Default" %}</td>
-            <td>{%= "/" %}</td>
-            <td>
-                {%! UpstreamUrlTemplate(c, "default", c.DefaultUpstream) %}
-            </td>
-        </tr>
-        {% for i, up := range c.Upstreams %}
-            <tr>
-                <td>{%= strconv.Itoa(i) %}</td>
-                <td>
-                    {%! UpstreamPathPrefixTemplate(c, strconv.Itoa(i), up.PathPrefix) %}
-                </td>
-                <td>
-                    {%! UpstreamUrlTemplate(c, strconv.Itoa(i), up.Url) %}
-                </td>
-                <td>
-                    {%! MoveTemplate(c, i, types.DirectionUp, "Up") %}
-                    {%! MoveTemplate(c, i, types.DirectionDown, "Down") %}
-                </td>
-                <td>
-                    {%! DeleteTemplate(c, i) %}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    <h2>{%= "New Upstream" %}</h2>
+    <div class="row">
+        <div class="four columns"><h5>{%= "Path Prefix" %}</h5></div>
+        <div class="four columns"><h5>{%= "Destination" %}</h5></div>
+        <div class="three columns"><h5>{%= "Actions" %}</h5></div>
+    </div>
+    <div class="row">
+        <div class="four columns"><p>{%= "/" %}</p></div>
+        <div class="four columns">{%! UpstreamUrlTemplate(c, "default", c.DefaultUpstream) %}</div>
+        <div class="three columns"></div>
+    </div>
+    {% for i, up := range c.Upstreams %}
+        <div class="row">
+            <div class="four columns">{%! UpstreamPathPrefixTemplate(c, strconv.Itoa(i), up.PathPrefix) %}</div>
+            <div class="four columns">{%! UpstreamUrlTemplate(c, strconv.Itoa(i), up.Url) %}</div>
+            <div class="four columns">
+                <div class="row">
+                    <div class="four columns">{%! MoveTemplate(c, i, types.DirectionUp, "Up") %}</div>
+                    <div class="four columns">{%! MoveTemplate(c, i, types.DirectionDown, "Down") %}</div>
+                    <div class="four columns">{%! DeleteTemplate(c, i) %}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+    <h4>{%= "New Upstream" %}</h4>
     <form action={%= c.MoxyPath + "/config" %} method="POST" target="table">
-        <label>{%= "Path Prefix " %}<input name="pathprefix" size="50" /></label>
-        <label>{%= "Url " %}<input name="url" size="50" /></label>
-        <button type="submit">{%= "Add" %}</button>
+        <div class="row">
+            <div class="four columns">
+                <label>{%= "Path Prefix " %}<input type="url"  name="pathprefix" /></label>
+            </div>
+            <div class="four columns">
+                <label>{%= "Url " %}<input type="url"  name="url" /></label>
+            </div>
+            <div class="four columns">
+                <button class="button-primary" type="submit">{%= "Add" %}</button>
+            </div>
+        </div>
     </form>
 {% endtempl %}

@@ -61,10 +61,6 @@ func UpstreamUrlTemplate(c *config.Config, id string, url string) templ.Componen
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " size=\"50\"")
-		if err != nil {
-			return err
-		}
 		_, err = io.WriteString(w, " hidden=\"true\"")
 		if err != nil {
 			return err
@@ -73,7 +69,35 @@ func UpstreamUrlTemplate(c *config.Config, id string, url string) templ.Componen
 		if err != nil {
 			return err
 		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"row\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"two-thirds column\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
 		_, err = io.WriteString(w, "<input")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " type=\"url\"")
 		if err != nil {
 			return err
 		}
@@ -97,15 +121,31 @@ func UpstreamUrlTemplate(c *config.Config, id string, url string) templ.Componen
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " size=\"50\"")
-		if err != nil {
-			return err
-		}
 		_, err = io.WriteString(w, "/>")
 		if err != nil {
 			return err
 		}
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"one-third column\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
 		_, err = io.WriteString(w, "<button")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"button-primary\"")
 		if err != nil {
 			return err
 		}
@@ -122,6 +162,14 @@ func UpstreamUrlTemplate(c *config.Config, id string, url string) templ.Componen
 			return err
 		}
 		_, err = io.WriteString(w, "</button>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
 		if err != nil {
 			return err
 		}
@@ -187,10 +235,6 @@ func UpstreamPathPrefixTemplate(c *config.Config, id string, pathprefix string) 
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " size=\"50\"")
-		if err != nil {
-			return err
-		}
 		_, err = io.WriteString(w, " hidden=\"true\"")
 		if err != nil {
 			return err
@@ -199,7 +243,35 @@ func UpstreamPathPrefixTemplate(c *config.Config, id string, pathprefix string) 
 		if err != nil {
 			return err
 		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"row\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"two-thirds column\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
 		_, err = io.WriteString(w, "<input")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " type=\"url\"")
 		if err != nil {
 			return err
 		}
@@ -223,15 +295,31 @@ func UpstreamPathPrefixTemplate(c *config.Config, id string, pathprefix string) 
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " size=\"50\"")
-		if err != nil {
-			return err
-		}
 		_, err = io.WriteString(w, "/>")
 		if err != nil {
 			return err
 		}
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"one-third column\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
 		_, err = io.WriteString(w, "<button")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"button-primary\"")
 		if err != nil {
 			return err
 		}
@@ -248,6 +336,14 @@ func UpstreamPathPrefixTemplate(c *config.Config, id string, pathprefix string) 
 			return err
 		}
 		_, err = io.WriteString(w, "</button>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
 		if err != nil {
 			return err
 		}

@@ -7,10 +7,15 @@
     <head>
         <title>{%= "Moxy - Admin Portal" %}</title>
         <script type="module">{%! Raw("import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';") %}</script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
-        <h1>{%= "Moxy" %}</h1>
-        {%! turbo.TurboFrame(turbo.TurboFrameOptions{Id: "moxy-config", Src: "/moxy/config"}) %}
+        <div class="container">
+            <section class="header">
+                <h1 class="title">{%= "Moxy" %}</h1>
+            </section>
+            {%! turbo.TurboFrame(turbo.TurboFrameOptions{Id: "moxy-config", Src: "/moxy/config"}) %}
+        </div>
     </body>
 </html>
 {% endtempl %}

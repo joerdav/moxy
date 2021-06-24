@@ -1,5 +1,5 @@
 moxy_path = "/moxy"
-default_upstream = "https://go-feed-me.joe-davidson.co.uk"
+default_upstream = "http://localhost"
 [[upstream]]
 path_prefix = "/apps/basket"
 url = "http://localhost:8085"

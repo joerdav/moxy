@@ -243,27 +243,31 @@ func DeleteTemplate(c *config.Config, id int) templ.Component {
 
 func UpstreamTableTemplate(c *config.Config) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
-		_, err = io.WriteString(w, "<table>")
+		_, err = io.WriteString(w, "<div")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<tr>")
+		_, err = io.WriteString(w, " class=\"row\"")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<th>")
+		_, err = io.WriteString(w, ">")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, templ.EscapeString("Priority"))
+		_, err = io.WriteString(w, "<div")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</th>")
+		_, err = io.WriteString(w, " class=\"four columns\"")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<th>")
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<h5>")
 		if err != nil {
 			return err
 		}
@@ -271,11 +275,27 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</th>")
+		_, err = io.WriteString(w, "</h5>")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<th>")
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"four columns\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<h5>")
 		if err != nil {
 			return err
 		}
@@ -283,55 +303,71 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</th>")
+		_, err = io.WriteString(w, "</h5>")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<th>")
+		_, err = io.WriteString(w, "</div>")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, templ.EscapeString("Move"))
+		_, err = io.WriteString(w, "<div")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</th>")
+		_, err = io.WriteString(w, " class=\"three columns\"")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<th>")
+		_, err = io.WriteString(w, ">")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, templ.EscapeString("Delete"))
+		_, err = io.WriteString(w, "<h5>")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</th>")
+		_, err = io.WriteString(w, templ.EscapeString("Actions"))
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</tr>")
+		_, err = io.WriteString(w, "</h5>")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<tr>")
+		_, err = io.WriteString(w, "</div>")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<td>")
+		_, err = io.WriteString(w, "</div>")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, templ.EscapeString("Default"))
+		_, err = io.WriteString(w, "<div")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</td>")
+		_, err = io.WriteString(w, " class=\"row\"")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<td>")
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"four columns\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<p>")
 		if err != nil {
 			return err
 		}
@@ -339,11 +375,23 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</td>")
+		_, err = io.WriteString(w, "</p>")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<td>")
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"four columns\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
 		if err != nil {
 			return err
 		}
@@ -351,32 +399,52 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</td>")
+		_, err = io.WriteString(w, "</div>")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</tr>")
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"three columns\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
 		if err != nil {
 			return err
 		}
 		for i, up := range c.Upstreams {
-			_, err = io.WriteString(w, "<tr>")
+			_, err = io.WriteString(w, "<div")
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "<td>")
+			_, err = io.WriteString(w, " class=\"row\"")
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, templ.EscapeString(strconv.Itoa(i)))
+			_, err = io.WriteString(w, ">")
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "</td>")
+			_, err = io.WriteString(w, "<div")
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "<td>")
+			_, err = io.WriteString(w, " class=\"four columns\"")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, ">")
 			if err != nil {
 				return err
 			}
@@ -384,11 +452,19 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "</td>")
+			_, err = io.WriteString(w, "</div>")
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "<td>")
+			_, err = io.WriteString(w, "<div")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, " class=\"four columns\"")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, ">")
 			if err != nil {
 				return err
 			}
@@ -396,11 +472,43 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "</td>")
+			_, err = io.WriteString(w, "</div>")
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "<td>")
+			_, err = io.WriteString(w, "<div")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, " class=\"four columns\"")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, ">")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, "<div")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, " class=\"row\"")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, ">")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, "<div")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, " class=\"four columns\"")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, ">")
 			if err != nil {
 				return err
 			}
@@ -408,15 +516,39 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 			if err != nil {
 				return err
 			}
+			_, err = io.WriteString(w, "</div>")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, "<div")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, " class=\"four columns\"")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, ">")
+			if err != nil {
+				return err
+			}
 			err = MoveTemplate(c, i, types.DirectionDown, "Down").Render(ctx, w)
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "</td>")
+			_, err = io.WriteString(w, "</div>")
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "<td>")
+			_, err = io.WriteString(w, "<div")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, " class=\"four columns\"")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, ">")
 			if err != nil {
 				return err
 			}
@@ -424,20 +556,24 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "</td>")
+			_, err = io.WriteString(w, "</div>")
 			if err != nil {
 				return err
 			}
-			_, err = io.WriteString(w, "</tr>")
+			_, err = io.WriteString(w, "</div>")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, "</div>")
+			if err != nil {
+				return err
+			}
+			_, err = io.WriteString(w, "</div>")
 			if err != nil {
 				return err
 			}
 		}
-		_, err = io.WriteString(w, "</table>")
-		if err != nil {
-			return err
-		}
-		_, err = io.WriteString(w, "<h2>")
+		_, err = io.WriteString(w, "<h4>")
 		if err != nil {
 			return err
 		}
@@ -445,7 +581,7 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "</h2>")
+		_, err = io.WriteString(w, "</h4>")
 		if err != nil {
 			return err
 		}
@@ -481,6 +617,30 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"row\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"four columns\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
 		_, err = io.WriteString(w, "<label>")
 		if err != nil {
 			return err
@@ -493,11 +653,11 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " name=\"pathprefix\"")
+		_, err = io.WriteString(w, " type=\"url\"")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " size=\"50\"")
+		_, err = io.WriteString(w, " name=\"pathprefix\"")
 		if err != nil {
 			return err
 		}
@@ -506,6 +666,22 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 			return err
 		}
 		_, err = io.WriteString(w, "</label>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"four columns\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
 		if err != nil {
 			return err
 		}
@@ -521,11 +697,11 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " name=\"url\"")
+		_, err = io.WriteString(w, " type=\"url\"")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " size=\"50\"")
+		_, err = io.WriteString(w, " name=\"url\"")
 		if err != nil {
 			return err
 		}
@@ -537,7 +713,27 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"four columns\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
 		_, err = io.WriteString(w, "<button")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"button-primary\"")
 		if err != nil {
 			return err
 		}
@@ -554,6 +750,14 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 			return err
 		}
 		_, err = io.WriteString(w, "</button>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
 		if err != nil {
 			return err
 		}

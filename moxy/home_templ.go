@@ -49,6 +49,34 @@ func HomeTemplate() templ.Component {
 		if err != nil {
 			return err
 		}
+		_, err = io.WriteString(w, "<link")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " rel=\"stylesheet\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " href=\"https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " integrity=\"sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " crossorigin=\"anonymous\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " referrerpolicy=\"no-referrer\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "/>")
+		if err != nil {
+			return err
+		}
 		_, err = io.WriteString(w, "</head>")
 		if err != nil {
 			return err
@@ -57,7 +85,39 @@ func HomeTemplate() templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, "<h1>")
+		_, err = io.WriteString(w, "<div")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"container\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<section")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"header\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<h1")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"title\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
 		if err != nil {
 			return err
 		}
@@ -69,7 +129,15 @@ func HomeTemplate() templ.Component {
 		if err != nil {
 			return err
 		}
+		_, err = io.WriteString(w, "</section>")
+		if err != nil {
+			return err
+		}
 		err = turbo.TurboFrame(turbo.TurboFrameOptions{Id: "moxy-config", Src: "/moxy/config"}).Render(ctx, w)
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</div>")
 		if err != nil {
 			return err
 		}
