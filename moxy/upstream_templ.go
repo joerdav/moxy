@@ -271,7 +271,7 @@ func UpstreamPathPrefixTemplate(c *config.Config, id string, pathprefix string) 
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " type=\"url\"")
+		_, err = io.WriteString(w, " type=\"text\"")
 		if err != nil {
 			return err
 		}

@@ -16,7 +16,7 @@ type ConfigHandler struct {
 func (h ConfigHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	res.Header().Add("Content-Type", "text/html")
 
-	content := ConfigTemplate(h.config)
+	content := ConfigTemplate(h.config, " ")
 
 	frame := turbo.TurboFrame(turbo.TurboFrameOptions{Id: "moxy-config", Contents: &content})
 
@@ -43,7 +43,7 @@ func (h UpdateUrlHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) 
 		h.config.Upstreams[i].Url = v
 	}
 
-	content := ConfigTemplate(h.config)
+	content := ConfigTemplate(h.config, "Updated url")
 
 	frame := turbo.TurboFrame(turbo.TurboFrameOptions{Id: "table", Contents: &content})
 
@@ -70,7 +70,7 @@ func (h UpdatePathPrefixHandler) ServeHTTP(res http.ResponseWriter, req *http.Re
 		h.config.Upstreams[i].PathPrefix = v
 	}
 
-	content := ConfigTemplate(h.config)
+	content := ConfigTemplate(h.config, "Updated path")
 
 	frame := turbo.TurboFrame(turbo.TurboFrameOptions{Id: "table", Contents: &content})
 
@@ -94,7 +94,7 @@ func (h AddConfigHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) 
 
 	h.config.Upstreams = append(h.config.Upstreams, up)
 
-	content := ConfigTemplate(h.config)
+	content := ConfigTemplate(h.config, "Added new upstream")
 
 	frame := turbo.TurboFrame(turbo.TurboFrameOptions{Id: "table", Contents: &content})
 
@@ -128,7 +128,7 @@ func (h MoveConfigHandler) ServeHTTP(res http.ResponseWriter, req *http.Request)
 		h.config.Upstreams[id], h.config.Upstreams[id+1] = h.config.Upstreams[id+1], h.config.Upstreams[id]
 	}
 
-	content := ConfigTemplate(h.config)
+	content := ConfigTemplate(h.config, "Moved upstream priority")
 
 	frame := turbo.TurboFrame(turbo.TurboFrameOptions{Id: "table", Contents: &content})
 
@@ -150,7 +150,7 @@ func (h DeleteConfigHandler) ServeHTTP(res http.ResponseWriter, req *http.Reques
 
 	h.config.Upstreams = append(h.config.Upstreams[:id], h.config.Upstreams[id+1:]...)
 
-	content := ConfigTemplate(h.config)
+	content := ConfigTemplate(h.config, "Upstream deleted")
 
 	frame := turbo.TurboFrame(turbo.TurboFrameOptions{Id: "table", Contents: &content})
 

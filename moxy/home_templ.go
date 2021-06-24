@@ -6,8 +6,9 @@ import "github.com/a-h/templ"
 import "context"
 import "io"
 import "github.com/joe-davidson1802/turbo-templ/turbo"
+import "github.com/joe-davidson1802/moxy/config"
 
-func HomeTemplate() templ.Component {
+func HomeTemplate(c *config.Config) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
 		_, err = io.WriteString(w, "<html>")
 		if err != nil {
@@ -57,19 +58,75 @@ func HomeTemplate() templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " href=\"https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css\"")
+		_, err = io.WriteString(w, " href=")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " integrity=\"sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==\"")
+		_, err = io.WriteString(w, "\"")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " crossorigin=\"anonymous\"")
+		_, err = io.WriteString(w, templ.EscapeString(c.MoxyPath+"/css/skeleton.css"))
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " referrerpolicy=\"no-referrer\"")
+		_, err = io.WriteString(w, "\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "/>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<link")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " rel=\"stylesheet\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " href=")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, templ.EscapeString(c.MoxyPath+"/css/normalize.css"))
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "/>")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<link")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " rel=\"stylesheet\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " href=")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, templ.EscapeString(c.MoxyPath+"/css/styles.css"))
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "\"")
 		if err != nil {
 			return err
 		}

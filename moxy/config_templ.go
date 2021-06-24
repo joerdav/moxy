@@ -7,7 +7,7 @@ import "context"
 import "io"
 import "github.com/joe-davidson1802/moxy/config"
 
-func ConfigTemplate(c *config.Config) templ.Component {
+func ConfigTemplate(c *config.Config, message string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
 		_, err = io.WriteString(w, "<turbo-frame")
 		if err != nil {
@@ -18,6 +18,30 @@ func ConfigTemplate(c *config.Config) templ.Component {
 			return err
 		}
 		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "<h6")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " class=\"transparent fade-out\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, " style=\"color:green\"")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, ">")
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, templ.EscapeString(message))
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, "</h6>")
 		if err != nil {
 			return err
 		}

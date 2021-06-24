@@ -633,7 +633,7 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " class=\"four columns\"")
+		_, err = io.WriteString(w, " class=\"five columns\"")
 		if err != nil {
 			return err
 		}
@@ -653,7 +653,7 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " type=\"url\"")
+		_, err = io.WriteString(w, " type=\"text\"")
 		if err != nil {
 			return err
 		}
@@ -677,7 +677,7 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " class=\"four columns\"")
+		_, err = io.WriteString(w, " class=\"five columns\"")
 		if err != nil {
 			return err
 		}
@@ -721,7 +721,7 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " class=\"four columns\"")
+		_, err = io.WriteString(w, " class=\"two columns\"")
 		if err != nil {
 			return err
 		}

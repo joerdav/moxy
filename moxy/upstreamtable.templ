@@ -47,13 +47,13 @@
     <h4>{%= "New Upstream" %}</h4>
     <form action={%= c.MoxyPath + "/config" %} method="POST" target="table">
         <div class="row">
-            <div class="four columns">
-                <label>{%= "Path Prefix " %}<input type="url"  name="pathprefix" /></label>
+            <div class="five columns">
+                <label>{%= "Path Prefix " %}<input type="text"  name="pathprefix" /></label>
             </div>
-            <div class="four columns">
+            <div class="five columns">
                 <label>{%= "Url " %}<input type="url"  name="url" /></label>
             </div>
-            <div class="four columns">
+            <div class="two columns">
                 <button class="button-primary" type="submit">{%= "Add" %}</button>
             </div>
         </div>

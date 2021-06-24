@@ -13,5 +13,5 @@ type HomeHandler struct {
 func (h HomeHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	res.Header().Add("Content-Type", "text/html")
 
-	HomeTemplate().Render(req.Context(), res)
+	HomeTemplate(h.config).Render(req.Context(), res)
 }

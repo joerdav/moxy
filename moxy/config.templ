@@ -2,8 +2,9 @@
 
 {% import "github.com/joe-davidson1802/moxy/config" %}
 
-{% templ ConfigTemplate(c *config.Config) %}
+{% templ ConfigTemplate(c *config.Config, message string) %}
     <turbo-frame id="table">
+        <h6 class="transparent fade-out" style="color:green">{%= message %}</h6>
         {%! UpstreamTableTemplate(c) %}
     </turbo-frame>
 {% endtempl %}
