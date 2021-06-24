@@ -4,19 +4,19 @@ ENV GO111MODULE=on
 
 RUN go install github.com/a-h/templ/cmd/templ@latest
 
-WORKDIR /src
-COPY go.mod /src/.
-COPY go.sum /src/.
+WORKDIR /app
+COPY go.mod /app/.
+COPY go.sum /app/.
 
 RUN go mod download
 
-COPY . /src/.
+COPY . /app/.
 
 RUN templ generate
 
 RUN go mod verify
 RUN go mod vendor
 
-RUN go build -o /src/tmp/cmd ./cmd
+RUN go build -o /app/tmp/cmd ./cmd
 EXPOSE 80
-CMD ["/src/tmp/cmd"]
+CMD ["/app/tmp/cmd"]
