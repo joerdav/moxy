@@ -1,4 +1,4 @@
-moxy_path = "/moxy"
+moxy_path = "/moxyo"
 default_upstream = "http://localhost:8081"
 [[upstream]]
 path_prefix = "/apps/basket"

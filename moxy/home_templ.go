@@ -190,7 +190,7 @@ func HomeTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		err = turbo.TurboFrame(turbo.TurboFrameOptions{Id: "moxy-config", Src: "/moxy/config"}).Render(ctx, w)
+		err = turbo.TurboFrame(turbo.TurboFrameOptions{Id: "moxy-config", Src:  c.MoxyPath+"/config"}).Render(ctx, w)
 		if err != nil {
 			return err
 		}
