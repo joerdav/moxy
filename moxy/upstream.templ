@@ -1,0 +1,19 @@
+{% package moxy %}
+
+{% import "github.com/joe-davidson1802/moxy/config" %}
+
+{% templ UpstreamUrlTemplate(c *config.Config, id string, url string) %}
+    <form action={%= c.MoxyPath + "/url" %} method="PUT">
+        <input name="id" value={%= id %} size="50" hidden="true" />
+        <input name="url" value={%= url %} size="50" />
+        <button type="submit">{%= "Update" %}</button>
+    </form>
+{% endtempl %}
+
+{% templ UpstreamPathPrefixTemplate(c *config.Config, id string, pathprefix string) %}
+    <form action={%= c.MoxyPath + "/pathprefix" %} method="PUT">
+        <input name="id" value={%= id %} size="50" hidden="true" />
+        <input name="path" value={%= pathprefix %} size="50" />
+        <button type="submit">{%= "Update" %}</button>
+    </form>
+{% endtempl %}

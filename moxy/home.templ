@@ -1,0 +1,16 @@
+{% package moxy %}
+
+{% import "github.com/joe-davidson1802/turbo-templ/turbo" %}
+
+{% templ HomeTemplate() %}
+<html>
+    <head>
+        <title>{%= "Moxy - Admin Portal" %}</title>
+        <script type="module">{%! Raw("import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';") %}</script>
+    </head>
+    <body>
+        <h1>{%= "Moxy" %}</h1>
+        {%! turbo.TurboFrame(turbo.TurboFrameOptions{Id: "moxy-config", Src: "/moxy/config"}) %}
+    </body>
+</html>
+{% endtempl %}

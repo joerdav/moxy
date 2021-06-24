@@ -1,0 +1,63 @@
+{% package moxy %}
+
+{% import "strconv" %}
+{% import "github.com/joe-davidson1802/moxy/config" %}
+{% import "github.com/joe-davidson1802/moxy/types" %}
+
+{% templ MoveTemplate(c *config.Config, id int, dir types.MoveDirection, text string) %}
+    <form action={%= c.MoxyPath + "/move" %} method="POST" target="table">
+        <input name="id" value={%= strconv.Itoa(id) %} size="50" hidden="true" />
+        <input name="direction" value={%= dir.String() %} size="50" hidden="true" />
+        <button type="submit">{%= text %}</button>
+    </form>
+{% endtempl %}
+
+{% templ DeleteTemplate(c *config.Config, id int) %}
+    <form action={%= c.MoxyPath + "/delete" %} method="POST" target="table">
+        <input name="id" value={%= strconv.Itoa(id) %} size="50" hidden="true" />
+        <button type="submit">{%= "Delete" %}</button>
+    </form>
+{% endtempl %}
+
+{% templ UpstreamTableTemplate(c *config.Config) %}
+    <table>
+        <tr>
+            <th>{%= "Priority" %}</th>
+            <th>{%= "Path Prefix" %}</th>
+            <th>{%= "Destination" %}</th>
+            <th>{%= "Move" %}</th>
+            <th>{%= "Delete" %}</th>
+        </tr>
+        <tr>
+            <td>{%= "Default" %}</td>
+            <td>{%= "/" %}</td>
+            <td>
+                {%! UpstreamUrlTemplate(c, "default", c.DefaultUpstream) %}
+            </td>
+        </tr>
+        {% for i, up := range c.Upstreams %}
+            <tr>
+                <td>{%= strconv.Itoa(i) %}</td>
+                <td>
+                    {%! UpstreamPathPrefixTemplate(c, strconv.Itoa(i), up.PathPrefix) %}
+                </td>
+                <td>
+                    {%! UpstreamUrlTemplate(c, strconv.Itoa(i), up.Url) %}
+                </td>
+                <td>
+                    {%! MoveTemplate(c, i, types.DirectionUp, "Up") %}
+                    {%! MoveTemplate(c, i, types.DirectionDown, "Down") %}
+                </td>
+                <td>
+                    {%! DeleteTemplate(c, i) %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h2>{%= "New Upstream" %}</h2>
+    <form action={%= c.MoxyPath + "/config" %} method="POST" target="table">
+        <label>{%= "Path Prefix " %}<input name="pathprefix" size="50" /></label>
+        <label>{%= "Url " %}<input name="url" size="50" /></label>
+        <button type="submit">{%= "Add" %}</button>
+    </form>
+{% endtempl %}

@@ -1,0 +1,9 @@
+{% package moxy %}
+
+{% import "github.com/joe-davidson1802/moxy/config" %}
+
+{% templ ConfigTemplate(c *config.Config) %}
+    <turbo-frame id="table">
+        {%! UpstreamTableTemplate(c) %}
+    </turbo-frame>
+{% endtempl %}

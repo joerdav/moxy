@@ -8,6 +8,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/gorilla/mux"
 	"github.com/joe-davidson1802/moxy/config"
+	"github.com/joe-davidson1802/moxy/moxy"
 	"github.com/joe-davidson1802/moxy/proxy"
 )
 
@@ -25,8 +26,12 @@ func Run() {
 	r := mux.NewRouter()
 
 	r.
+		PathPrefix(c.MoxyPath).
+		Handler(moxy.NewMoxy(&c))
+
+	r.
 		PathPrefix("/").
-		Handler(proxy.New(c))
+		Handler(proxy.New(&c))
 
 	fmt.Println("Listening: :80")
 

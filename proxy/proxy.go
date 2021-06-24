@@ -10,14 +10,14 @@ import (
 	"github.com/joe-davidson1802/moxy/config"
 )
 
-func New(c config.Config) ProxyHandler {
+func New(c *config.Config) ProxyHandler {
 	return ProxyHandler{
 		config: c,
 	}
 }
 
 type ProxyHandler struct {
-	config config.Config
+	config *config.Config
 }
 
 func (h ProxyHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
