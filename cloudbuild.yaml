@@ -5,11 +5,11 @@ steps:
    secretEnv: ['USERNAME', 'PASSWORD']
  - name: 'gcr.io/cloud-builders/docker'
    entrypoint: 'bash'
-   args: ['-c', 'docker build -t $$USERNAME/moxy:TAG .']
+   args: ['-c', 'docker build -t $$USERNAME/moxy:$TAG_NAME .']
    secretEnv: ['USERNAME']
  - name: 'gcr.io/cloud-builders/docker'
    entrypoint: 'bash'
-   args: ['-c', 'docker push $$USERNAME/moxy:TAG']
+   args: ['-c', 'docker push $$USERNAME/moxy:$TAG_NAME']
    secretEnv: ['USERNAME']
 availableSecrets:
   secretManager:
