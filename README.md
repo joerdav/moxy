@@ -10,8 +10,25 @@ To get running fast just run:
 
 To specify your own defaults config file run:
 
-`docker run -p 80:80 -v ./defaults.toml:/app/defaults.toml joedavidson1802/moxy`
+`docker run -p 80:80 -v ./my_defaults.toml:/app/defaults.toml joedavidson1802/moxy`
 
-## Config file
+## Config file defaults
 
-TODO
+``` toml
+moxy_path = "/moxy" # The default path that the moxy admin portal will appear on
+default_upstream = "http://localhost:8081" # The upstream traffic will default to
+
+# A list of upstreams (order matters they will be evaluated top down)
+[[upstream]]
+path_prefix = "/apps/basket"
+url = "http://localhost:8085"
+[[upstream]]
+path_prefix = "/apps/browse"
+url = "http://localhost:8085"
+[[upstream]]
+path_prefix = "/apps/details"
+url = "http://localhost:8085"
+[[upstream]]
+path_prefix = "/apps/random"
+url = "http://localhost:8085"
+```
