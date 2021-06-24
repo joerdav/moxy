@@ -23,13 +23,13 @@ type ProxyHandler struct {
 func (h ProxyHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	source := req.URL.String()
 
-	url, _ := url.Parse(h.config.GetDestination(req.RequestURI))
+	host, _ := url.Parse(h.config.GetDestination(req.RequestURI))
 
-	proxy := httputil.NewSingleHostReverseProxy(url)
+	proxy := httputil.NewSingleHostReverseProxy(host)
 
-	req.URL.Host = url.Host
-	req.URL.Scheme = url.Scheme
-	req.Host = url.Host
+	req.URL.Host = host.Host
+	req.URL.Scheme = host.Scheme
+	req.Host = host.Host
 
 	fmt.Printf("%s -> %s\n", source, req.URL.String())
 

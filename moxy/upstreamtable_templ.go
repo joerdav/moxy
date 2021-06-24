@@ -395,7 +395,7 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		err = UpstreamUrlTemplate(c, "default", c.DefaultUpstream).Render(ctx, w)
+		err = UpstreamHostTemplate(c, "default", c.DefaultUpstream).Render(ctx, w)
 		if err != nil {
 			return err
 		}
@@ -468,7 +468,7 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 			if err != nil {
 				return err
 			}
-			err = UpstreamUrlTemplate(c, strconv.Itoa(i), up.Url).Render(ctx, w)
+			err = UpstreamHostTemplate(c, strconv.Itoa(i), up.Host).Render(ctx, w)
 			if err != nil {
 				return err
 			}
@@ -689,7 +689,7 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, templ.EscapeString("Url "))
+		_, err = io.WriteString(w, templ.EscapeString("Host "))
 		if err != nil {
 			return err
 		}
@@ -697,11 +697,11 @@ func UpstreamTableTemplate(c *config.Config) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " type=\"url\"")
+		_, err = io.WriteString(w, " type=\"host\"")
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " name=\"url\"")
+		_, err = io.WriteString(w, " name=\"host\"")
 		if err != nil {
 			return err
 		}

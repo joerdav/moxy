@@ -27,13 +27,13 @@
     </div>
     <div class="row">
         <div class="four columns"><p>{%= "/" %}</p></div>
-        <div class="four columns">{%! UpstreamUrlTemplate(c, "default", c.DefaultUpstream) %}</div>
+        <div class="four columns">{%! UpstreamHostTemplate(c, "default", c.DefaultUpstream) %}</div>
         <div class="three columns"></div>
     </div>
     {% for i, up := range c.Upstreams %}
         <div class="row">
             <div class="four columns">{%! UpstreamPathPrefixTemplate(c, strconv.Itoa(i), up.PathPrefix) %}</div>
-            <div class="four columns">{%! UpstreamUrlTemplate(c, strconv.Itoa(i), up.Url) %}</div>
+            <div class="four columns">{%! UpstreamHostTemplate(c, strconv.Itoa(i), up.Host) %}</div>
             <div class="four columns">
                 <div class="row">
                     <div class="four columns">{%! MoveTemplate(c, i, types.DirectionUp, "Up") %}</div>
@@ -51,7 +51,7 @@
                 <label>{%= "Path Prefix " %}<input type="text"  name="pathprefix" /></label>
             </div>
             <div class="five columns">
-                <label>{%= "Url " %}<input type="url"  name="url" /></label>
+                <label>{%= "Host " %}<input type="host"  name="host" /></label>
             </div>
             <div class="two columns">
                 <button class="button-primary" type="submit">{%= "Add" %}</button>

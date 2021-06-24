@@ -2,12 +2,12 @@
 
 {% import "github.com/joe-davidson1802/moxy/config" %}
 
-{% templ UpstreamUrlTemplate(c *config.Config, id string, url string) %}
-    <form action={%= c.MoxyPath + "/url" %} method="PUT">
+{% templ UpstreamHostTemplate(c *config.Config, id string, host string) %}
+    <form action={%= c.MoxyPath + "/host" %} method="PUT">
         <input name="id" value={%= id %} hidden="true" />
         <div class="row">
             <div class="two-thirds column">
-                <input type="url" name="url" value={%= url %} />
+                <input type="url" name="host" value={%= host %} />
             </div>
             <div class="one-third column">
                 <button class="button-primary" type="submit">{%= "Update" %}</button>

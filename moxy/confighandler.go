@@ -23,14 +23,14 @@ func (h ConfigHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	frame.Render(req.Context(), res)
 }
 
-type UpdateUrlHandler struct {
+type UpdateHostHandler struct {
 	config *config.Config
 }
 
-func (h UpdateUrlHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+func (h UpdateHostHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	res.Header().Add("Content-Type", "text/html")
 
-	v := req.FormValue("url")
+	v := req.FormValue("host")
 	id := req.FormValue("id")
 
 	if id == "default" {
@@ -40,10 +40,10 @@ func (h UpdateUrlHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) 
 		if err != nil {
 			panic(err)
 		}
-		h.config.Upstreams[i].Url = v
+		h.config.Upstreams[i].Host = v
 	}
 
-	content := ConfigTemplate(h.config, "Updated url")
+	content := ConfigTemplate(h.config, "Updated host")
 
 	frame := turbo.TurboFrame(turbo.TurboFrameOptions{Id: "table", Contents: &content})
 
@@ -84,11 +84,11 @@ type AddConfigHandler struct {
 func (h AddConfigHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	res.Header().Add("Content-Type", "text/html")
 
-	u := req.FormValue("url")
+	u := req.FormValue("host")
 	v := req.FormValue("pathprefix")
 
 	up := config.Upstream{
-		Url:        u,
+		Host:       u,
 		PathPrefix: v,
 	}
 

@@ -21,14 +21,14 @@ default_upstream = "http://localhost:8081" # The upstream traffic will default t
 # A list of upstreams (order matters they will be evaluated top down)
 [[upstream]]
 path_prefix = "/apps/basket"
-url = "http://localhost:8085"
+host = "http://localhost:8085"
 [[upstream]]
 path_prefix = "/apps/browse"
-url = "http://localhost:8085"
+host = "http://localhost:8085"
 [[upstream]]
 path_prefix = "/apps/details"
-url = "http://localhost:8085"
+host = "http://localhost:8085"
 [[upstream]]
 path_prefix = "/apps/random"
-url = "http://localhost:8085"
+host = "http://localhost:8085"
 ```

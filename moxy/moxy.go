@@ -29,7 +29,7 @@ func NewMoxy(c *config.Config) http.Handler {
 	r.
 		Handle(c.MoxyPath+"/move", MoveConfigHandler{config: c}).Methods("POST")
 	r.
-		Handle(c.MoxyPath+"/url", UpdateUrlHandler{config: c}).Methods("PUT")
+		Handle(c.MoxyPath+"/host", UpdateHostHandler{config: c}).Methods("PUT")
 	r.
 		Handle(c.MoxyPath+"/pathprefix", UpdatePathPrefixHandler{config: c}).Methods("PUT")
 	r.

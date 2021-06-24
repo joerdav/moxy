@@ -7,7 +7,7 @@ import "context"
 import "io"
 import "github.com/joe-davidson1802/moxy/config"
 
-func UpstreamUrlTemplate(c *config.Config, id string, url string) templ.Component {
+func UpstreamHostTemplate(c *config.Config, id string, host string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
 		_, err = io.WriteString(w, "<form")
 		if err != nil {
@@ -21,7 +21,7 @@ func UpstreamUrlTemplate(c *config.Config, id string, url string) templ.Componen
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, templ.EscapeString(c.MoxyPath + "/url"))
+		_, err = io.WriteString(w, templ.EscapeString(c.MoxyPath + "/host"))
 		if err != nil {
 			return err
 		}
@@ -101,7 +101,7 @@ func UpstreamUrlTemplate(c *config.Config, id string, url string) templ.Componen
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, " name=\"url\"")
+		_, err = io.WriteString(w, " name=\"host\"")
 		if err != nil {
 			return err
 		}
@@ -113,7 +113,7 @@ func UpstreamUrlTemplate(c *config.Config, id string, url string) templ.Componen
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, templ.EscapeString(url))
+		_, err = io.WriteString(w, templ.EscapeString(host))
 		if err != nil {
 			return err
 		}
