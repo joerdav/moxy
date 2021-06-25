@@ -2,7 +2,7 @@ FROM golang:latest
 
 ENV GO111MODULE=on
 
-RUN go install github.com/a-h/templ/cmd/templ@latest
+RUN go install github.com/a-h/templ/cmd/templ@v0.0.113
 
 WORKDIR /app
 COPY go.mod /app/.

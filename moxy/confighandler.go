@@ -38,7 +38,9 @@ func (h UpdateHostHandler) ServeHTTP(res http.ResponseWriter, req *http.Request)
 	} else {
 		i, err := strconv.Atoi(id)
 		if err != nil {
-			panic(err)
+			res.WriteHeader(400)
+			res.Write([]byte("invalid id"))
+			return
 		}
 		h.config.Upstreams[i].Host = v
 	}
@@ -65,7 +67,8 @@ func (h UpdatePathPrefixHandler) ServeHTTP(res http.ResponseWriter, req *http.Re
 	} else {
 		i, err := strconv.Atoi(id)
 		if err != nil {
-			panic(err)
+			res.WriteHeader(400)
+			res.Write([]byte("invalid id"))
 		}
 		h.config.Upstreams[i].PathPrefix = v
 	}
@@ -111,7 +114,8 @@ func (h MoveConfigHandler) ServeHTTP(res http.ResponseWriter, req *http.Request)
 	id, err := strconv.Atoi(req.FormValue("id"))
 
 	if err != nil {
-		panic(err)
+		res.WriteHeader(400)
+		res.Write([]byte("invalid id"))
 	}
 
 	dir := types.NewMoveDirection(req.FormValue("direction"))
@@ -145,7 +149,8 @@ func (h DeleteConfigHandler) ServeHTTP(res http.ResponseWriter, req *http.Reques
 	id, err := strconv.Atoi(req.FormValue("id"))
 
 	if err != nil {
-		panic(err)
+		res.WriteHeader(400)
+		res.Write([]byte("invalid id"))
 	}
 
 	h.config.Upstreams = append(h.config.Upstreams[:id], h.config.Upstreams[id+1:]...)

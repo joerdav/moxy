@@ -2,9 +2,6 @@
     height: 5px;
     background-color: green;
 }
-.transparent {
-    opacity:0;
-}
 .fade-out {
     animation: fadeOut ease 8s;
     -webkit-animation: fadeOut ease 8s;

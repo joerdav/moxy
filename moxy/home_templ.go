@@ -10,6 +10,7 @@ import "github.com/joe-davidson1802/moxy/config"
 
 func HomeTemplate(c *config.Config) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		ctx, _ = templ.RenderedCSSClassesFromContext(ctx)
 		_, err = io.WriteString(w, "<html>")
 		if err != nil {
 			return err

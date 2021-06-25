@@ -9,6 +9,7 @@ import "github.com/joe-davidson1802/moxy/config"
 
 func UpstreamHostTemplate(c *config.Config, id string, host string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		ctx, _ = templ.RenderedCSSClassesFromContext(ctx)
 		_, err = io.WriteString(w, "<form")
 		if err != nil {
 			return err
@@ -183,6 +184,7 @@ func UpstreamHostTemplate(c *config.Config, id string, host string) templ.Compon
 
 func UpstreamPathPrefixTemplate(c *config.Config, id string, pathprefix string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		ctx, _ = templ.RenderedCSSClassesFromContext(ctx)
 		_, err = io.WriteString(w, "<form")
 		if err != nil {
 			return err

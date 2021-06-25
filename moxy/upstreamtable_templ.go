@@ -11,6 +11,7 @@ import "github.com/joe-davidson1802/moxy/types"
 
 func MoveTemplate(c *config.Config, id int, dir types.MoveDirection, text string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		ctx, _ = templ.RenderedCSSClassesFromContext(ctx)
 		_, err = io.WriteString(w, "<form")
 		if err != nil {
 			return err
@@ -145,6 +146,7 @@ func MoveTemplate(c *config.Config, id int, dir types.MoveDirection, text string
 
 func DeleteTemplate(c *config.Config, id int) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		ctx, _ = templ.RenderedCSSClassesFromContext(ctx)
 		_, err = io.WriteString(w, "<form")
 		if err != nil {
 			return err
@@ -243,6 +245,7 @@ func DeleteTemplate(c *config.Config, id int) templ.Component {
 
 func UpstreamTableTemplate(c *config.Config) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		ctx, _ = templ.RenderedCSSClassesFromContext(ctx)
 		_, err = io.WriteString(w, "<div")
 		if err != nil {
 			return err

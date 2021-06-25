@@ -2,9 +2,17 @@
 
 {% import "github.com/joe-davidson1802/moxy/config" %}
 
+{% css green() %}
+    color: #00FF00;
+{% endcss %}
+
+{% css transparent() %}
+    opacity: 0;
+{% endcss %}
+
 {% templ ConfigTemplate(c *config.Config, message string) %}
     <turbo-frame id="table">
-        <h6 class="transparent fade-out" style="color:green">{%= message %}</h6>
+        <h6 class={%= templ.Classes(transparent(), green(), templ.Class("fade-out")) %}>{%= message %}</h6>
         {%! UpstreamTableTemplate(c) %}
     </turbo-frame>
 {% endtempl %}
