@@ -5,7 +5,28 @@ package moxy
 import "github.com/a-h/templ"
 import "context"
 import "io"
+import "strings"
 import "github.com/joe-davidson1802/moxy/config"
+
+func green() templ.CSSClass {
+	var templCSSBuilder strings.Builder
+	templCSSBuilder.WriteString(`color:#00FF00;`)
+	templCSSID := templ.CSSID(`green`, templCSSBuilder.String())
+	return templ.ComponentCSSClass{
+		ID: templCSSID,
+		Class: templ.SafeCSS(`.` + templCSSID + `{` + templCSSBuilder.String() + `}`),
+	}
+}
+
+func transparent() templ.CSSClass {
+	var templCSSBuilder strings.Builder
+	templCSSBuilder.WriteString(`opacity:0;`)
+	templCSSID := templ.CSSID(`transparent`, templCSSBuilder.String())
+	return templ.ComponentCSSClass{
+		ID: templCSSID,
+		Class: templ.SafeCSS(`.` + templCSSID + `{` + templCSSBuilder.String() + `}`),
+	}
+}
 
 func ConfigTemplate(c *config.Config, message string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
@@ -22,8 +43,8 @@ func ConfigTemplate(c *config.Config, message string) templ.Component {
 		if err != nil {
 			return err
 		}
-		var templCSSClassess templ.CSSClasses = templ.Classes(transparent(), green(), templ.Class("fade-out"))
-		err = templ.RenderCSS(ctx, w, templCSSClassess)
+		var var_1 templ.CSSClasses = templ.Classes(transparent(), green(), templ.Class("fade-out"))
+		err = templ.RenderCSS(ctx, w, var_1)
 		if err != nil {
 			return err
 		}
@@ -39,7 +60,7 @@ func ConfigTemplate(c *config.Config, message string) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = io.WriteString(w, templ.EscapeString(templCSSClassess.String()))
+		_, err = io.WriteString(w, templ.EscapeString(var_1.String()))
 		if err != nil {
 			return err
 		}
