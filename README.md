@@ -4,6 +4,13 @@ A small proxy built for developing micro-frontends locally.
 
 ## Usage
 
+Run using cli:
+
+``` bash
+go install github.com/joe-davidson1802/moxy/cmd/moxy@latest 
+moxy
+```
+
 To get running fast just run:
 
 `docker run -p 80:80 joedavidson1802/moxy`
