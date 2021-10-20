@@ -1,6 +1,7 @@
 package moxy
 
 import (
+	"embed"
 	"fmt"
 	"net/http"
 
@@ -15,10 +16,13 @@ func logRequest(handler http.Handler) http.Handler {
 	})
 }
 
+//go:embed css
+var content embed.FS
+
 func NewMoxy(c *config.Config) http.Handler {
 	r := mux.NewRouter()
 
-	fs := logRequest(http.FileServer(http.Dir("./moxy/css")))
+	fs := logRequest(http.FileServer(http.FS(content)))
 
 	r.
 		Handle(c.MoxyPath+"/config", ConfigHandler{config: c}).Methods("GET")
@@ -34,7 +38,7 @@ func NewMoxy(c *config.Config) http.Handler {
 		Handle(c.MoxyPath+"/pathprefix", UpdatePathPrefixHandler{config: c}).Methods("PUT")
 	r.
 		PathPrefix(c.MoxyPath + "/css").
-		Handler(logRequest(http.StripPrefix(c.MoxyPath+"/css/", fs)))
+		Handler(logRequest(http.StripPrefix(c.MoxyPath, fs)))
 	r.
 		Handle(c.MoxyPath, HomeHandler{config: c})
 
